@@ -4200,7 +4200,27 @@ DefinitionBlock ("./dsdt.aml", "DSDT", 1, "A1192", "A1192000", 0x00000000)
             Device (IDE0)
             {
                 Name (_ADR, 0x001F0001)
-                Name (^NATA, Package (0x01)
+OperationRegion (IDET, PCI_Config, 0x40, 0x04) // IDE Timing Register
+Field (IDET, WordAcc, NoLock, Preserve)
+   {
+     Offset (0x00),
+     M1, 8,
+     Offset (0x01),
+     M2, 8,
+     Offset (0x02),
+     M3, 8,
+     Offset (0x03),
+     M4, 8
+   }
+
+     Method (_DSM, 4, NotSerialized)
+   {
+     Store (0x07, M1)
+     Store (0xE3, M2)
+     Store (Zero, M3)
+     Store (0xC0, M4)
+     Return (Zero)
+   }                   Name (^NATA, Package (0x01)
                 {
                     0x001F0001
                 })
