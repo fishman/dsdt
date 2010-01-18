@@ -1,0 +1,5 @@
+I lost all the history on this project but it's basically the 1104 dsdt modified based on the tutorial from [1]
+in addition to the pata patch to avoid a KP on SL
+
+
+[1] http://technow.cc/2009/10/08/learn-how-to-create-your-own-dsdt/
